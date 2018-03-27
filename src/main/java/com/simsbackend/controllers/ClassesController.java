@@ -20,7 +20,7 @@ public class ClassesController {
 
     // Get All classes
     @GetMapping("/all")
-    public List<Classes> getAllNotes() {
+    public List<Classes> getAllClasses() {
         return levels.findAll();
     }
 
@@ -28,7 +28,7 @@ public class ClassesController {
 
     // Create a new Note
     @PostMapping("/new")
-    public Classes createNote(@Valid @RequestBody Classes newclass) {
+    public Classes createClass(@Valid @RequestBody Classes newclass) {
         return levels.save(newclass);
     }
 }
