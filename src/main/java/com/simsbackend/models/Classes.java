@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Administrator on 26-Mar-18.
@@ -26,11 +28,24 @@ public class Classes {
     @Column (name="stream_name")
     private String stream_name;
 
-    @Column (name="updated_at")
+    @Column(name="updated_at",nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updated_at;
 
-    @Column (name="created_at")
+
+
+    @Column(name="created_at" ,nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date  created_at;
+
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "classes")
+    private Set<Student> students = new HashSet<>();
 
 
     public Classes (){
@@ -84,5 +99,13 @@ this.stream_name=stream_name;
 
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 }

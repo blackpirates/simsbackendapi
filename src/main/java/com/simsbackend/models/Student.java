@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Administrator on 26-Mar-18.
@@ -54,9 +56,15 @@ public class Student implements Serializable {
     @Column(name="active")
     private Integer  active;
 
-
-
-
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "class_student",
+            joinColumns = { @JoinColumn(name = "student_id") },
+            inverseJoinColumns = { @JoinColumn(name = "class_id") })
+    private Set<Classes> classes = new HashSet<>();
 
     public Student(){
 
@@ -140,5 +148,13 @@ public class Student implements Serializable {
 
     public void setActive(Integer active) {
         this.active = active;
+    }
+
+    public Set<Classes> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Set<Classes> classes) {
+        this.classes = classes;
     }
 }
