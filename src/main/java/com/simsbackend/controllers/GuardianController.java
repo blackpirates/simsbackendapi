@@ -19,7 +19,7 @@ public class GuardianController {
     @Autowired
     GuardiansRepository myparents;
 
-    // Get All students
+    // Get All guardians
     @GetMapping("/all")
     public List<Guardians> getAllParents() {
         return myparents.findAll();
