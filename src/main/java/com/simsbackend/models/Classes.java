@@ -44,24 +44,19 @@ public class Classes implements Serializable{
     private Date  created_at;
 
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            },
-            mappedBy = "classes")
-    private Set<Student> students = new HashSet<>();
+    @OneToMany(mappedBy = "classes")
+    private Set<StudentClasses> classes = new HashSet<>();
 
 
     public Classes (){
 
     }
 
-    public Classes(String class_name,String stream_name,Date created_at,Date updated_at){
+    public Classes(String class_name,String stream_name){
 this.class_name=class_name;
 this.stream_name=stream_name;
-this.created_at=created_at;
-this.updated_at=updated_at;
+
+
     }
 
 
@@ -108,11 +103,11 @@ this.updated_at=updated_at;
         this.created_at = created_at;
     }
 
-    public Set<Student> getStudents() {
-        return students;
+    public Set<StudentClasses> getClasses() {
+        return classes;
     }
 
-    public void setStudents(Set<Student> students) {
-        this.students = students;
+    public void setClasses(Set<StudentClasses> classes) {
+        this.classes = classes;
     }
 }

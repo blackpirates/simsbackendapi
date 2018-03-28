@@ -8,9 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Administrator on 26-Mar-18.
@@ -56,15 +54,9 @@ public class Student implements Serializable {
     @Column(name="active")
     private Integer  active;
 
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
-    @JoinTable(name = "class_student",
-            joinColumns = { @JoinColumn(name = "student_id") },
-            inverseJoinColumns = { @JoinColumn(name = "class_id") })
-    private Set<Classes> classes = new HashSet<>();
+
+    @OneToMany(mappedBy = "students", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<StudentClasses> students = new HashSet<>();
 
     public Student(){
 
@@ -75,7 +67,7 @@ public class Student implements Serializable {
         this.admission_number= admission_number;
         this.date_of_birth= date_of_birth;
         this.active= (active);
-   this.image_src=image_src;
+        this.image_src=image_src;
         this.admission_date=admission_date;
     }
 
@@ -151,11 +143,11 @@ public class Student implements Serializable {
         this.active = active;
     }
 
-    public Set<Classes> getClasses() {
-        return classes;
+    public Set<StudentClasses> getStudents() {
+        return students;
     }
 
-    public void setClasses(Set<Classes> classes) {
-        this.classes = classes;
+    public void setStudents(Set<StudentClasses> students) {
+        this.students = students;
     }
 }

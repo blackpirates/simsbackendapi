@@ -6,6 +6,8 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Administrator on 28-Mar-18.
@@ -41,6 +43,17 @@ public class Staff {
     @LastModifiedDate
     private Date updatedAt;
 
+
+
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "department_staff",
+            joinColumns = { @JoinColumn(name = "staff_id") },
+            inverseJoinColumns = { @JoinColumn(name = "department_id") })
+    private Set<Departments> departments = new HashSet<>();
 
 
     public Staff(){
@@ -92,5 +105,14 @@ public class Staff {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+
+    public Set<Departments> getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Set<Departments> departments) {
+        this.departments = departments;
     }
 }
