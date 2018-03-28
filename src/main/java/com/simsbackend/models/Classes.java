@@ -3,6 +3,7 @@ package com.simsbackend.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import java.util.Set;
  * Created by Administrator on 26-Mar-18.
  */
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="classes")
 @JsonIgnoreProperties(value = {"created_at", "updated_at"},
         allowGetters = true)
@@ -31,14 +33,12 @@ public class Classes implements Serializable{
     @Column (name="stream_name")
     private String stream_name;
 
-    @Column(name="updated_at",nullable = false, updatable = false)
+    @Column(name="updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updated_at;
 
-
-
-    @Column(name="created_at" ,nullable = false, updatable = false)
+    @Column(name="created_at" )
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date  created_at;

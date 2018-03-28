@@ -10,15 +10,19 @@ import java.util.Date;
 @Entity
 @Table(name="class_student")
 public class StudentClasses implements Serializable {
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "student_id")
      private Student students;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "class_id")
     private  Classes classes;
     private Date   year;
 
 
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "student_id")
+
     public Student getStudents() {
         return students;
     }
@@ -27,9 +31,7 @@ public class StudentClasses implements Serializable {
         this.students = students;
     }
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "class_id")
+
     public Classes getClasses() {
         return classes;
     }
