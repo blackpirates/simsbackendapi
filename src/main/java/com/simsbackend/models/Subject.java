@@ -17,7 +17,7 @@ import java.util.Date;
 @JsonIgnoreProperties(value = {"created_at", "updated_at"},
         allowGetters = true)
 public class Subject {
-
+    @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int id;
