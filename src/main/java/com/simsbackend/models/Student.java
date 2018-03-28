@@ -17,14 +17,14 @@ import java.util.Set;
  */
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"},
+@JsonIgnoreProperties(value = {"created_at", "updated_at"},
         allowGetters = true)
 @Table(name="students")
 public class Student implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column
     private Integer  id;
 
@@ -40,7 +40,7 @@ public class Student implements Serializable {
     @Column(name="image_src")
     private String image_src;
 
-    @Column(name="created_at" ,nullable = false, updatable = false)
+    @Column(name="created_at" )
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date created_at;
@@ -48,7 +48,7 @@ public class Student implements Serializable {
     @Column(name="admission_date")
     private Date admission_date;
 
-    @Column(name="updated_at",nullable = false, updatable = false)
+    @Column(name="updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updated_at;
@@ -70,11 +70,12 @@ public class Student implements Serializable {
 
     }
 
-    public Student(String full_name, String admission_number, LocalDate date_of_birth, Date admission_date, Integer active){
+    public Student(String full_name, String admission_number, LocalDate date_of_birth,String image_src, Date admission_date,Integer active){
         this.full_name=full_name;
         this.admission_number= admission_number;
         this.date_of_birth= date_of_birth;
         this.active= (active);
+   this.image_src=image_src;
         this.admission_date=admission_date;
     }
 

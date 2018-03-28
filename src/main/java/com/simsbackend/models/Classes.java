@@ -1,9 +1,12 @@
 package com.simsbackend.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,10 +18,10 @@ import java.util.Set;
 @Table(name="classes")
 @JsonIgnoreProperties(value = {"created_at", "updated_at"},
         allowGetters = true)
-public class Classes {
+public class Classes implements Serializable{
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column
     private Integer id;
 
@@ -30,11 +33,13 @@ public class Classes {
 
     @Column(name="updated_at",nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
     private Date updated_at;
 
 
 
     @Column(name="created_at" ,nullable = false, updatable = false)
+    @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date  created_at;
 
@@ -52,9 +57,11 @@ public class Classes {
 
     }
 
-    public Classes(String class_name,String stream_name){
+    public Classes(String class_name,String stream_name,Date created_at,Date updated_at){
 this.class_name=class_name;
 this.stream_name=stream_name;
+this.created_at=created_at;
+this.updated_at=updated_at;
     }
 
 
