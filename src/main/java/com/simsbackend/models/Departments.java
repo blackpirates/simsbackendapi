@@ -1,5 +1,6 @@
 package com.simsbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -13,6 +14,9 @@ import java.util.Set;
  */
 @Entity
 @Table(name="departments")
+@EntityListeners(EntityListeners.class)
+@JsonIgnoreProperties(value = {"updated_at","created_at"},allowGetters = true)
+
 public class Departments {
 
     @Id
@@ -22,12 +26,12 @@ public class Departments {
     @Column (name="name")
     private String name;
 
-    @Column
+    @Column(name="updated_at")
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
-    @Column
+    @Column(name="created_at")
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
