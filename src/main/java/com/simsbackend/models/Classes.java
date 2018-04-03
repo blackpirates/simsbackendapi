@@ -44,9 +44,10 @@ public class Classes implements Serializable{
     private Date  created_at;
 
 
-    @OneToMany(mappedBy = "classes")
-    private Set<StudentClasses> classes = new HashSet<>();
 
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "student_id")
+    private Set<Student> students  = new HashSet<>();
 
     public Classes (){
 
@@ -103,11 +104,11 @@ this.stream_name=stream_name;
         this.created_at = created_at;
     }
 
-    public Set<StudentClasses> getClasses() {
-        return classes;
+    public Set<Student> getStudents() {
+        return students;
     }
 
-    public void setClasses(Set<StudentClasses> classes) {
-        this.classes = classes;
+    public void setStudents(Set<Student> students) {
+        this.students = students;
     }
 }

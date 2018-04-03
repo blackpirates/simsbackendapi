@@ -28,14 +28,14 @@ public class StaffController {
 
 
 
-    // Create a new parent
+    // Create a new staff
     @PostMapping("/add")
     public Staff  createParent(@Valid @RequestBody Staff newstaff) {
         return mystaff.save(newstaff);
     }
 
 
-    // Get a single parent by id
+    // Get a single staff member  by id
     @GetMapping("/search/{id}")
     public Staff getParentById(@PathVariable(value = "id") int  id) {
         return mystaff.findById(id)

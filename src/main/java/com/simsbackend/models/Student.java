@@ -55,8 +55,9 @@ public class Student implements Serializable {
     private Integer  active;
 
 
-    @OneToMany(mappedBy = "students", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<StudentClasses> students = new HashSet<>();
+    @OneToMany( cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "class_id")
+    private Set<Classes> classes = new HashSet<>();
 
     public Student(){
 
@@ -143,11 +144,11 @@ public class Student implements Serializable {
         this.active = active;
     }
 
-    public Set<StudentClasses> getStudents() {
-        return students;
+    public Set<Classes> getClasses() {
+        return classes;
     }
 
-    public void setStudents(Set<StudentClasses> students) {
-        this.students = students;
+    public void setClasses(Set<Classes> classes) {
+        this.classes = classes;
     }
 }

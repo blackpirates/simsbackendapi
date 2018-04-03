@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar fx:id="menubar" style="-fx-background-color: #006064;" VBox.vgrow="NEVER">
+      <menus>
+        <Menu fx:id="school" mnemonicParsing="false" text="school">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu fx:id="manage" mnemonicParsing="false" text="manage">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu fx:id="help" mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+         <effect>
+            <DropShadow />
+         </effect>
+    </MenuBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+            <SplitMenuButton fx:id="home" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Home">
+              <items>
+                <MenuItem fx:id="studentscentre" mnemonicParsing="false" text="studentscentre" />
+                <MenuItem fx:id="parentscentre" mnemonicParsing="false" text="parentscentre" />
+              </items>
+            </SplitMenuButton>
+        </items>
+      </ToolBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <BorderPane layoutX="-3.0" prefHeight="623.0" prefWidth="800.0">
+               <left>
+                  <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="100.0" style="-fx-background-color: #006064;" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXButton fx:id="students" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" prefHeight="35.0" prefWidth="101.0" ripplerFill="BLACK" text="students">
+                           <graphic>
+                              <ImageView fx:id="studentsImage" fitHeight="27.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@student-1-512.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton fx:id="parents" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="10.0" prefHeight="35.0" prefWidth="101.0" text="academics">
+                           <graphic>
+                              <ImageView fx:id="parentsImage" fitHeight="27.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@wp-editor-icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton fx:id="finances" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="45.0" prefHeight="35.0" prefWidth="101.0" text="academics">
+                           <graphic>
+                              <ImageView fitHeight="27.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@money_icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton fx:id="classes" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="80.0" prefHeight="35.0" prefWidth="101.0" text="academics">
+                           <graphic>
+                              <ImageView fx:id="classesImage" fitHeight="27.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Noun_project_-_Meeting_with_laptops.svg.png" />
+                                 </image>
+                                 <effect>
+                                    <Glow level="0.62">
+                                       <input>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant />
+                                             </light>
+                                          </Lighting>
+                                       </input>
+                                    </Glow>
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="reminders" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="115.0" prefHeight="35.0" prefWidth="101.0" text="academics">
+                           <graphic>
+                              <ImageView fx:id="remindersImage" fitHeight="27.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@calendarDefault.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton fx:id="exams" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="10.0" layoutY="150.0" prefHeight="35.0" prefWidth="101.0" text="academics">
+                           <graphic>
+                              <ImageView fx:id="examsImage" fitHeight="27.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@clipboard-symbol-white.png" />
+                                 </image>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton fx:id="staff" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="20.0" layoutY="125.0" prefHeight="35.0" prefWidth="101.0" text="academics">
+                           <graphic>
+                              <ImageView fx:id="staffImage" fitHeight="27.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@profesor.png" />
+                                 </image>
+                                 <effect>
+                                    <Glow />
+                                 </effect>
+                              </ImageView>
+                           </graphic>
+                           <effect>
+                              <Glow />
+                           </effect>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </left>
+               <bottom>
+                  <HBox prefHeight="34.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </HBox>
+               </bottom>
+               <right>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+               </right>
+            </BorderPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
